@@ -729,7 +729,7 @@ impl Vim {
                         (start_of_line..start_of_line, indent + "\n")
                     })
                     .collect::<Vec<_>>();
-                editor.edit_with_autoindent(edits, cx);
+                editor.edit_bottom_up_with_autoindent(edits, cx);
                 editor.change_selections(Default::default(), window, cx, |s| {
                     s.move_with(&mut |map, selection| {
                         let previous_line = map.start_of_relative_buffer_row(selection.start, -1);
